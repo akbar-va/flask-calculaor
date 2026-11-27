@@ -1,0 +1,245 @@
+:root {
+    --bg: #0f172a;
+    --panel: #1e293b;
+    --panel-border: rgba(148, 163, 184, 0.16);
+    --display-bg: #0b1120;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --num-bg: #334155;
+    --num-hover: #475569;
+    --util-bg: #273449;
+    --util-hover: #364763;
+    --op-bg: #1d4ed8;
+    --op-hover: #2563eb;
+    --eq-bg: #059669;
+    --eq-hover: #10b981;
+    --error: #f87171;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: radial-gradient(circle at top, #1e293b 0%, var(--bg) 65%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.app-shell {
+    display: grid;
+    grid-template-columns: minmax(300px, 360px) minmax(220px, 260px);
+    gap: 20px;
+    align-items: stretch;
+}
+
+.calculator,
+.history-panel {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+}
+
+.calc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.brand {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.hint {
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+.display {
+    background: var(--display-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 16px;
+    min-height: 98px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.expression {
+    width: 100%;
+    text-align: right;
+    font-size: 1.7rem;
+    font-weight: 600;
+    word-break: break-all;
+    line-height: 1.25;
+}
+
+.result {
+    min-height: 22px;
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+.result.error {
+    color: var(--error);
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    border: none;
+    border-radius: 12px;
+    padding: 15px 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 0.08s ease, background-color 0.15s ease;
+    user-select: none;
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.btn-num {
+    background: var(--num-bg);
+}
+
+.btn-num:hover {
+    background: var(--num-hover);
+}
+
+.btn-utility {
+    background: var(--util-bg);
+    color: #cbd5e1;
+}
+
+.btn-utility:hover {
+    background: var(--util-hover);
+}
+
+.btn-op {
+    background: var(--op-bg);
+}
+
+.btn-op:hover {
+    background: var(--op-hover);
+}
+
+.btn-equals {
+    background: var(--eq-bg);
+}
+
+.btn-equals:hover {
+    background: var(--eq-hover);
+}
+
+.span-two {
+    grid-column: span 2;
+}
+
+.history-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.history-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.clear-history {
+    background: transparent;
+    border: 1px solid var(--panel-border);
+    color: var(--muted);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    cursor: pointer;
+}
+
+.clear-history:hover {
+    color: var(--text);
+    border-color: var(--muted);
+}
+
+.history-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+    max-height: 390px;
+}
+
+.history-item {
+    background: var(--display-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    text-align: right;
+    transition: border-color 0.15s ease;
+}
+
+.history-item:hover {
+    border-color: #3b82f6;
+}
+
+.history-expr {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    word-break: break-all;
+}
+
+.history-res {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.history-empty {
+    color: var(--muted);
+    font-size: 0.88rem;
+    text-align: center;
+    padding: 24px 8px;
+}
+
+@media (max-width: 680px) {
+    .app-shell {
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 380px;
+    }
+}
